@@ -2,6 +2,8 @@
 
 Simple calculator implementation in VueJS.
 
+[https://pfrohner.github.io/vue-calculator/](https://pfrohner.github.io/vue-calculator/)
+
 ## Requirements
  - Node 8+
  - npm install
@@ -28,7 +30,7 @@ Run E2E testing with testcafe. (needs Chrome installed)
 
 ### `npm run build`
 
-Builds the app for production to the `dist` folder.<br>
+Builds the app for production to the `dist` folder, and deploys it to github.io.<br>
 It correctly bundles in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.<br>
@@ -40,4 +42,3 @@ This project template was built with [Vue CLI 3](https://cli.vuejs.org/), which 
 
 If value is too long it can go outside of the field.<br>
 Add more VueJS magic!<br>
-Setup hosting on github.io.<br>

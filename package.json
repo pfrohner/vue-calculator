@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
+    "build": "vue-cli-service build && ./node_modules/push-dir/bin/push-dir.js --dir dist --branch=gh-pages --cleanup --allow-unclean",
     "test:unit": "vue-cli-service test:unit",
     "test:unit:watch": "vue-cli-service test:unit --watch",
     "test:e2e": "testcafe chrome:headless tests/e2e/app.js"
