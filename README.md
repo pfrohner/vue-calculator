@@ -8,17 +8,11 @@ Simple calculator implementation in VueJS.
 
 For E2E testing a headless chrome is also required.
 
-## Todo
-
-If value is too long it can go outside of the field.
-Add more VueJS magic!
-Setup hosting on github.io.
-
 ## Available Scripts
 
 ### `npm run serve`
 
-Runs the app in the development mode.<br>
+Runs the app in the development mode.<br><br>
 Open [http://localhost:8080](http://localhost:8080) to view it in the browser. (port may be different if this one is being used already)
 
 The page will reload if you make edits.<br>
@@ -41,3 +35,9 @@ The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
 
 This project template was built with [Vue CLI 3](https://cli.vuejs.org/), which provides a simple way to start Vue projects with no build configuration needed.
+
+## Todo
+
+If value is too long it can go outside of the field.<br>
+Add more VueJS magic!<br>
+Setup hosting on github.io.<br>
