@@ -1,26 +1,26 @@
 <template>
   <div class="container">
     <div class="calculator">
-      <input type="text" :value="display" class="display" readonly id="calculator" />
-      <div class="buttons">
-        <button @click="clear" class="button">C</button>
-        <button @click="action('+')" class="button">+</button>
-        <button @click="action('-')" class="button">-</button>
-        <button @click="backspace" class="button">&#x232b;</button>
-        <button @click="input('7')" class="button">7</button>
-        <button @click="input('8')" class="button">8</button>
-        <button @click="input('9')" class="button">9</button>
-        <button @click="action('*')" class="button">*</button>
-        <button @click="input('4')" class="button">4</button>
-        <button @click="input('5')" class="button">5</button>
-        <button @click="input('6')" class="button">6</button>
-        <button @click="action('/')" class="button">/</button>
-        <button @click="input('1')" class="button">1</button>
-        <button @click="input('2')" class="button">2</button>
-        <button @click="input('3')" class="button">3</button>
-        <button @click="action('^')" class="button">^</button>
-        <button @click="input('0')" class="button double">0</button>
-        <button @click="equal()" class="button double">=</button>
+      <input type="text" :value="display" readonly id="display" />
+      <div class="controls">
+        <button @click="clear">C</button>
+        <button @click="action('+')">+</button>
+        <button @click="action('-')">-</button>
+        <button @click="backspace">&#x232b;</button>
+        <button @click="input('7')">7</button>
+        <button @click="input('8')">8</button>
+        <button @click="input('9')">9</button>
+        <button @click="action('*')">*</button>
+        <button @click="input('4')">4</button>
+        <button @click="input('5')">5</button>
+        <button @click="input('6')">6</button>
+        <button @click="action('/')">/</button>
+        <button @click="input('1')">1</button>
+        <button @click="input('2')">2</button>
+        <button @click="input('3')">3</button>
+        <button @click="action('^')">^</button>
+        <button @click="input('0')" class="double">0</button>
+        <button @click="equal()" class="double">=</button>
       </div>
     </div>
   </div>
@@ -130,7 +130,7 @@ body {
   padding-top: 1rem;
 }
 
-.display {
+#display {
   border: 0;
   color: #fff;
   font-size: 4rem;
@@ -139,7 +139,7 @@ body {
   padding: 0 1rem 1rem;
 }
 
-.buttons {
+.controls {
   cursor: pointer;
   user-select: none;
   display: flex;
@@ -148,7 +148,7 @@ body {
   align-items: stretch;
 }
 
-.button {
+button {
   font-size: 1.5rem;
   color: #fff;
   width: 25%;

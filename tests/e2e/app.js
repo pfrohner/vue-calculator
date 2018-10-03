@@ -8,7 +8,7 @@ test('Addition', async t => {
     .pressKey('+')
     .pressKey('3')
     .pressKey('Enter')
-    .expect(Selector('#calculator').value).eql('5')
+    .expect(Selector('#display').value).eql('5')
 })
 
 test('Subtraction', async t => {
@@ -17,7 +17,7 @@ test('Subtraction', async t => {
     .pressKey('-')
     .pressKey('2')
     .pressKey('Enter')
-    .expect(Selector('#calculator').value).eql('1')
+    .expect(Selector('#display').value).eql('1')
 })
 
 test('Multiplication', async t => {
@@ -26,7 +26,7 @@ test('Multiplication', async t => {
     .pressKey('*')
     .pressKey('3')
     .pressKey('Enter')
-    .expect(Selector('#calculator').value).eql('6')
+    .expect(Selector('#display').value).eql('6')
 })
 
 test('Division', async t => {
@@ -35,7 +35,7 @@ test('Division', async t => {
     .pressKey('/')
     .pressKey('2')
     .pressKey('Enter')
-    .expect(Selector('#calculator').value).eql('1.5')
+    .expect(Selector('#display').value).eql('1.5')
 })
 
 test('Exponentiation', async t => {
@@ -44,5 +44,5 @@ test('Exponentiation', async t => {
     .pressKey('^')
     .pressKey('3')
     .pressKey('Enter')
-    .expect(Selector('#calculator').value).eql('8')
+    .expect(Selector('#display').value).eql('8')
 })
