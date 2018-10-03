@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="calculator">
-      <input type="text" v-model="display" class="display" readonly id="calculator" />
+      <input type="text" :value="display" class="display" readonly id="calculator" />
       <div class="buttons">
         <button @click="clear" class="button">C</button>
         <button @click="action('+')" class="button">+</button>
