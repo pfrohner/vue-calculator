@@ -109,6 +109,7 @@ export default {
 <style scoped lang="scss">
 body {
   background-color: #dcdcdc;
+  touch-action: manipulation;
 }
 
 .container {
@@ -152,6 +153,7 @@ body {
   color: #fff;
   width: 25%;
   flex-grow: 1;
+  margin: 0;
   padding: 1.5rem 0;
   text-align: center;
   outline: none;
