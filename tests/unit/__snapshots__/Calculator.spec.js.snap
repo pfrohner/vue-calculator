@@ -8,8 +8,16 @@ exports[`Calculator.vue renders correctly 1`] = `
     class="calculator"
   >
     <input
+      class="display"
       id="display"
       readonly="readonly"
+      type="text"
+    />
+     
+    <input
+      class="display"
+      readonly="readonly"
+      style="display: none;"
       type="text"
     />
      

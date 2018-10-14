@@ -1,7 +1,8 @@
 <template>
   <div class="container">
     <div class="calculator">
-      <input type="text" :value="display" readonly id="display" />
+      <input type="text" :value="display" readonly class="display" id="display"  />
+      <input type="text" :value="calculated" readonly class="display" v-show="false" />
       <div class="controls">
         <button @click="clear">C</button>
         <button @click="action('+')">+</button>
@@ -40,66 +41,74 @@ export default {
   created () {
     window.addEventListener('keydown', this.keyHandler)
   },
+  computed: {
+    calculated: function () {
+      if (actionsEnabled.includes(this.display.slice(-1))) {
+        return this.display
+      } else if (this.display.indexOf('^') !== -1) {
+        const values = this.display.split('^')
+        return Math.pow(values[0], values[1])
+      } else {
+        return eval(this.display) // eslint-disable-line
+      }
+    }
+  },
   methods: {
     keyHandler: function (event) {
       const key = event.key || event.keyCode
 
-      if (keysEnabled.includes(key)) {
-        this.input(key)
-      } else if (actionsEnabled.includes(key)) {
-        this.action(key)
-      } else if (key === 'Enter') {
-        this.setDisplay(this.calculate())
-      } else if (key === 'Backspace') {
-        this.backspace()
-      } else if (key === 'Escape' || key === 'Esc') {
-        this.clear()
+      switch (key) {
+        case 'Enter':
+          this.equal()
+          break
+        case 'Backspace':
+          this.backspace()
+          break
+        case 'Escape':
+          this.clear()
+          break
+        case 'Esc':
+          this.clear()
+          break
+        default:
+          if (keysEnabled.includes(key)) {
+            this.input(key)
+          }
+          if (actionsEnabled.includes(key)) {
+            this.action(key)
+          }
+          break
       }
     },
     setDisplay: function (value) {
-      this.display = value
-    },
-    input: function (num) {
-      // show 0 when empty
-      const newValue = this.display === '0' ? num : this.display += num
-      this.setDisplay(newValue)
+      this.display = value.toString()
     },
     action: function (opt) {
-      this.normalize()
-      // if anyhing to calculate, do it!
-      if (actionsEnabled.filter(action => this.display.includes(action))) {
-        this.setDisplay(this.calculate())
+      // we already have an action present, we have to replace it with the new action
+      if (actionsEnabled.includes(this.display.slice(-1))) {
+        this.backspace()
       }
-      this.setDisplay(this.display += opt)
+
+      // do the math if we had something already to evaluate
+      if (actionsEnabled.filter(action => this.display.includes(action).length > 0)) {
+        this.equal()
+      }
+
+      this.setDisplay(this.display.concat(opt))
+    },
+    input: function (key) {
+      const newValue = this.display === '0' ? key : this.display.concat(key) // show zero when empty
+      this.setDisplay(newValue)
     },
     clear: function () {
       this.setDisplay('0')
     },
     equal: function () {
-      this.setDisplay(this.calculate())
+      this.setDisplay(this.calculated)
     },
     backspace: function () {
-      // show 0 when empty
-      const newValue = this.display.length > 1 ? this.display.slice(0, -1) : '0'
+      const newValue = this.display.length > 1 ? this.display.slice(0, -1) : '0' // show zero when empty
       this.setDisplay(newValue)
-    },
-    normalize: function () {
-      // only one operator allowed at a time, and none should be present at the end of the equation
-      if (this.display.length > 0 && actionsEnabled.includes(this.display.slice(-1))) {
-        this.backspace()
-      }
-    },
-    // TODO: move it out to a util function? use Math functions for everything instead of evil-eval?
-    calculate: function () {
-      this.normalize()
-
-      // exponentiation is an exception
-      if (this.display.indexOf('^') !== -1) {
-        const values = this.display.split('^')
-        return Math.pow(values[0], values[1])
-      } else {
-        return eval(this.display).toString() // eslint-disable-line
-      }
     }
   }
 }
@@ -130,7 +139,7 @@ body {
   padding-top: 1rem;
 }
 
-#display {
+.display {
   border: 0;
   color: #fff;
   font-size: 4rem;
